@@ -9,7 +9,8 @@ class RestaurantReviews < SQLite3::Database
     self.results_as_hash = true
     self.type_translation = true
   end
-
+  
+  # good formatting!
   def add_restaurant(name, neighborhood, cuisine)
     RestaurantReviews.instance.execute(
       "INSERT INTO restaurants (name, neighborhood, cuisine)
@@ -90,7 +91,7 @@ class RestaurantReviews < SQLite3::Database
       sum + row["score"]
     end
     average_score = total_score / reviews.count.to_f
-
+    # I would break this into it's own pretty print method
     puts "\n'#{restaurant_name}' Reviews:"
     puts "Average Score: #{average_score.round(1)}\n"
     reviews.each do |review|
